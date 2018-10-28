@@ -7,15 +7,68 @@
 	<script src="/static/js/bootstrap.js"></script>
 </head>
 <body>
+<div class="container">
+    <div class="row">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                <a class="navbar-brand" href="#">FastWhatWebSearch</a>
+                </div>
+                <div>
+                    <ul class="nav navbar-nav">
+                        <li class="{% if url_for('fast') == request.path %}active{% endif %}"><a href="{{ url_for('fast') }}">Index</a></li>
+                        <li class="{% if url_for('jobs') == request.path %}active{% endif %}"><a href="{{ url_for('jobs') }}">Jobs</a></li>
+                        <li><a class="about" data-toggle="modal" data-target="#myModal">About</a></li>
+                        <li><a href="http://github.com/Rvn0xsy/FastWhatWebSearch" target="_blank">Github</a></li>
+                        <li><a href="https://github.com/Rvn0xsy/FastWhatWebSearch/issues" target="_blank">Issue</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">×
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					关于FastWhatWebSearch
+				</h4>
+			</div>
+			<div class="modal-body">
+                FastWhatWebSearch是一个能够支持搜索whatweb工具结果的一个微型平台。
+                <ul>
+                    <li>Version 1.0 需要手动启动whatweb</li>
+                    <li>Version 2.0 实现自动化任务调度</li>
+                </ul>
+                <br />
+                <br />
+                作者：<a href="http://github.com/Rvn0xsy/">Rvn0xsy(倾旋)</a> <br>
+                邮箱：rvn0xsy@gmail.com
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default"
+						data-dismiss="modal">关闭
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 {% block index %}{% endblock %}
+
+
 <div class="container well" style="margin-top: 10%">
     <div class="row">
         <div class="footer text-center">
     <div class="footer-title">
-        <h4>@Rvn0xsy Blog:http://payloads.online </h4>
+        <h4>@FastWhatWebSearch</h4>
     </div>
     <div class="footer-banner">
-        <small>Development by Rvn0xsy</small>
+        <small>Development by <a href="http://github.com/Rvn0xsy">Rvn0xsy</a></small>
     </div>
 </div>
     </div>

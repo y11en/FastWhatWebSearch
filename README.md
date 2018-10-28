@@ -41,13 +41,28 @@ pip install -r ./requirements.txt
 
 ### 使用方式
 
-1.首先要使用whatweb爬取目标，它将会自动写入数据到mongodb：
+~~1.首先要使用whatweb爬取目标，它将会自动写入数据到mongodb：~~
 
 ```commandline
 ./whatweb 0.0.0.0/24 --log-mongo-database=whatweb -p + ./plugins/title.rb
 ```
 
-可以使用 `-p +`参数调用多个插件。
+~~可以使用 `-p +`参数调用多个插件。~~
+
+1.Version 2.0已经支持任务调度，可在jobs页面添加任务
+
+可以在`config/config.py`中配置：
+
+```python
+# encoding:utf8
+config = {
+    'mongodb_uri':"mongodb://127.0.0.1/whatweb",
+    'whatweb_path':"/Users/rvn0xsy/GitProject/WhatWeb/whatweb",
+    'whatweb_plugins':'-p + ./plugins/title.rb',
+    'whatweb_default_args':'--log-mongo-database=whatweb --no-errors',
+    'process':False
+}
+```
 
 2.启动FastWhatWebSearch
 

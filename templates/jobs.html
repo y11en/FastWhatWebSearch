@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block index %}
+
+    <div class="container">
+        <div class="row">
+            <h1>FastWhatWebSearch - Jobs</h1>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion"
+                       href="#collapseOne">
+                        添加任务
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+        <div class="input-group">
+            <span class="input-group-addon">扫描目标</span>
+            <input type="text" class="form-control" id="target" placeholder="www.360ec.net OR 182.168.1.1 OR 10.10.127.0/24" name="target" value="" autocomplete="off">
+        </div>
+        <div class="text-right" style="padding-top: 20px">
+            <button class="btn btn-primary" id="add">添加任务</button>
+        </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion"
+				   href="#collapseTwo">
+					任务列表
+				</a>
+			</h4>
+		</div>
+		<div id="collapseTwo" class="panel-collapse collapse in">
+			<div class="panel-body">
+				<table class="table">
+                  <caption>后台任务列表</caption>
+                  <thead>
+                    <tr>
+                      <th>任务ID</th>
+                      <th>任务目标</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {%- for x in jobs %}
+                  <tr>
+                      <td>{{ x.id }}</td>
+                      <td>{{ x.name }}</td>
+                    </tr>
+                  {% endfor -%}
+              </tbody>
+            </table>
+			</div>
+		</div>
+	</div>
+   </div>
+    </div>
+    <script language="JavaScript">
+        $("#add").click(function () {
+            $.getJSON('{{ url_for("add") }}',{'target':$("#target").val()},function (result) {
+                alert(result.msg);
+                location.reload();
+            })
+        });
+    </script>
+{% endblock %}
+
+
+
